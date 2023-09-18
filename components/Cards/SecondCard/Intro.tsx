@@ -8,8 +8,8 @@ type Props = {};
 
 const Intro = (props: Props) => {
   return (
-    <>
-      <div className="w-full lg:w-auto bg-[#0077B6]  flex lg:flex-row flex-col justify-between martian">
+    <div className="martian">
+      <div className="w-full lg:w-auto bg-[#0077B6]  flex lg:flex-row flex-col justify-between ">
         <div className="flex justify-center items-center">
           {/* name */}
           <h1 className="text-[100px] text-center font-bold mt-4 tracking-widest text-white pl-3 leading-tight">
@@ -101,7 +101,7 @@ const Intro = (props: Props) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

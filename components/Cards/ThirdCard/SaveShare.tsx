@@ -8,9 +8,9 @@ type Props = {};
 
 const SaveShare = (props: Props) => {
   return (
-    <div className="bg-black flex justify-center items-center gap-4 lg:flex-row py-16 px-6 h-[500px]">
+    <div className="flex justify-center items-center gap-4 lg:flex-row py-16 px-6 h-[500px]">
       <div className="flex flex-col gap-10 ">
-        <button className="lg:w-96 w-80 h-16 rounded-lg bg-white flex p-2 justify-center items-center hover:bg-[#242424] hover:border-2 hover:border-[#F9D254] hover:text-[#F9D254] transition-all ease-in-out duration-150 relative font-medium tracking-widest">
+        <button className="lg:w-96 w-80 h-16 rounded-lg bg-[#0E79B2] flex p-2 justify-center items-center hover:bg-[#242424] hover:border-2 hover:border-[#0E79B2] hover:text-[#0E79B2] transition-all ease-in-out duration-150 relative font-medium tracking-widest">
           Save Card
           <Image
             src={SaveLogo}
@@ -19,7 +19,7 @@ const SaveShare = (props: Props) => {
           />
         </button>
 
-        <button className="lg:w-96 w-80 h-16 rounded-lg bg-white flex p-2 justify-center items-center hover:bg-[#242424] hover:border-2 hover:border-[#F9D254] hover:text-[#F9D254] transition-all ease-in-out duration-150 relative">
+        <button className="lg:w-96 w-80 h-16 rounded-lg bg-white flex p-2 justify-center items-center hover:bg-[#242424] hover:border-2 hover:border-white hover:text-white transition-all ease-in-out duration-150 relative">
           Share
           <Image
             src={ShareLogo}
@@ -28,7 +28,7 @@ const SaveShare = (props: Props) => {
           />
         </button>
 
-        <button className="lg:w-96 w-80 h-16 rounded-lg bg-white flex p-2 justify-center items-center hover:bg-[#242424] hover:border-2 hover:border-[#F9D254] hover:text-[#F9D254] transition-all ease-in-out duration-150 relative">
+        <button className="lg:w-96 w-80 h-16 rounded-lg bg-[#F39237] flex p-2 justify-center items-center hover:bg-[#242424] hover:border-2 hover:border-[#F39237] hover:text-[#F39237] transition-all ease-in-out duration-150 relative">
           Contact
           <Image
             src={PhoneLogo}
