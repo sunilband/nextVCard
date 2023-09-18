@@ -175,7 +175,6 @@ const GetAllusers = async (req, res) => {
         });
       }
 
-      
       const normalUsers = await User.find();
       const superUsers = await SuperUser.find({
         authLevel: { $lte: superUser.authLevel },
@@ -185,7 +184,6 @@ const GetAllusers = async (req, res) => {
         success: true,
         data: totalUsers,
       });
-    
     }
 
     if (user) {
@@ -195,8 +193,6 @@ const GetAllusers = async (req, res) => {
         data: normalUsers,
       });
     }
-    
-    
 
     // if(admin){
     //   const superUsers = await SuperUser.find({
@@ -204,7 +200,7 @@ const GetAllusers = async (req, res) => {
     //   });
     //   var totalUsers = [...superUsers, ...normalUsers];
     // }
-    
+
     // res.send({
     //   success: true,
     //   data: admin?totalUsers:normalUsers,

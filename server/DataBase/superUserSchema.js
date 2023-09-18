@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const dotenv = require("dotenv");
-const shortid = require('shortid');
-shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
+const shortid = require("shortid");
+shortid.characters(
+  "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@",
+);
 dotenv.config({ path: "../config.env" });
 
-
 const superUserSchema = new mongoose.Schema({
-
   name: {
     type: String,
     required: true,
@@ -30,43 +30,42 @@ const superUserSchema = new mongoose.Schema({
     minLength: [6, "Password too short"],
   },
 
-  admin:{
-    type:Boolean,
-    default:true,
-    enum:[true]
+  admin: {
+    type: Boolean,
+    default: true,
+    enum: [true],
   },
 
-  authLevel:{
-    type:Number,
+  authLevel: {
+    type: Number,
     required: true,
-    enum: [1,2,3,4],
+    enum: [1, 2, 3, 4],
   },
 
   role: {
     type: String,
     required: true,
     enum: ["Manager", "Team Lead", "CEO"],
-    message: 'Role must be one of intern, manager, or jr.dev'
+    message: "Role must be one of intern, manager, or jr.dev",
   },
 
   employeeID: {
     type: String,
     default: shortid.generate,
-    unique: true
+    unique: true,
   },
 
   department: {
     type: String,
     required: true,
     enum: ["Sales", "Frontend", "Backend", "Hr", "Other"],
-    message: 'Role must be one of sales, frontend,backend or hr'
+    message: "Role must be one of sales, frontend,backend or hr",
   },
 
   phone: {
     type: Number,
     required: true,
   },
-
 });
 
 superUserSchema.pre("save", async function (next) {

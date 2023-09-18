@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const dotenv = require("dotenv");
 const shortid = require("shortid");
 shortid.characters(
-  "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@"
+  "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@",
 );
 dotenv.config({ path: "../config.env" });
 

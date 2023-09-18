@@ -1,13 +1,12 @@
 const jwt = require("jsonwebtoken");
-const dotenv = require("dotenv")
-dotenv.config({path:"../config.env"})
-require("cookie-parser")
+const dotenv = require("dotenv");
+dotenv.config({ path: "../config.env" });
+require("cookie-parser");
 
 const config = process.env;
 
 const verifyToken = (req, res, next) => {
-    
-  const token = req.cookies.accessToken
+  const token = req.cookies.accessToken;
   console.log(token);
 
   if (!token) {
@@ -23,4 +22,3 @@ const verifyToken = (req, res, next) => {
 };
 
 module.exports = verifyToken;
-
