@@ -1,7 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Federo&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Martian+Mono&family=Roboto:wght@300;500&family=Rubik&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fascinate+Inline&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -74,19 +79,29 @@
     @apply bg-background text-foreground;
   }
 }
-
+/* cards */
+@layer components {
+  .card {
+    @apply bg-card text-card-foreground;
+  }
+}
+/* ----------------------------------------------------------------- */
 /* fonts */
 .martian {
-  @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Martian+Mono&family=Roboto:wght@300;500&family=Rubik&display=swap");
   font-family: "Martian Mono", monospace;
 }
 
 .thirdFont {
-  @import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
   font-family: "Staatliches", monospace;
 }
 
 .thirdFont2 {
-  @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap");
   font-family: "Atkinson Hyperlegible", sans-serif;
+}
+
+.fourthFont {
+  font-family: "Fascinate Inline", cursive;
+}
+.fourthFont2 {
+  font-family: "Federo", sans-serif;
 }
