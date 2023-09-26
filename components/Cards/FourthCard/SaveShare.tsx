@@ -8,7 +8,7 @@ type Props = {};
 
 const SaveShare = (props: Props) => {
   return (
-    <div className="flex justify-center items-center gap-4 lg:flex-row py-16 px-6 h-[500px] relative">
+    <div className="flex justify-center items-center gap-4 lg:flex-row py-16 px-6 h-[500px] relative fourthFont2">
       {/* logo */}
       <div
         style={{
