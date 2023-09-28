@@ -87,7 +87,7 @@ const Intro = (props: Props) => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-1 mt-7 md:text-[30px] font-normal">
+          <div className="flex flex-col gap-1 mt-7 md:text-[30px] font-normal fifthFont2">
             <p className="text-[#8B949E] ">Socials</p>
             <div className="mb-10">
               <p className="text-white flex flex-wrap gap-2">

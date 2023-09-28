@@ -3,6 +3,7 @@ import SecondCard from "@/components/Cards/SecondCard/SecondCard";
 import ThirdCard from "@/components/Cards/ThirdCard/ThirdCard";
 import FourthCard from "@/components/Cards/FourthCard/FourthCard";
 import FifthCard from "@/components/Cards/FifthCard/FifthCard";
+import SixthCard from "@/components/Cards/SixthCard/SixthCard";
 
 export default function Page({ params }: { params: { userName: string } }) {
   return (
@@ -11,7 +12,8 @@ export default function Page({ params }: { params: { userName: string } }) {
       {/* <SecondCard /> */}
       {/* <ThirdCard /> */}
       {/* <FourthCard /> */}
-      <FifthCard />
+      {/* <FifthCard /> */}
+      <SixthCard />
     </div>
   );
 }
