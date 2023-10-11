@@ -11,6 +11,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=League+Gothic&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -144,4 +145,12 @@
 
 .eighthFont2 {
   font-family: "DM Sans", sans-serif;
+}
+
+.ninthFont {
+  font-family: "Climate Crisis", sans-serif;
+}
+
+.ninthFont2 {
+  font-family: "Manrope", sans-serif;
 }
