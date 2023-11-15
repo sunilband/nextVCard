@@ -12,8 +12,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { setCookie, parseCookies } from "nookies";
 import { getCookie } from "../../utils/getCookie";
-import userContext from "@/context/userContext";
-import { UserInterface } from "@/context/userContext";
+import { useUserContext } from "@/context/userContexts";
 import { useContext } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -51,7 +50,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     onSubmit: (values) => {},
   });
   const { toast } = useToast();
-  const { user, setUser } = useContext(userContext);
+  const { user, setUser } = useUserContext();
   const router = useRouter();
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 

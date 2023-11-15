@@ -10,7 +10,7 @@ import googleIcon from "@/public/svgs/google.svg";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
-import userContext from "@/context/userContext";
+import { useUserContext } from "@/context/userContexts";
 import { setCookie, parseCookies } from "nookies";
 import { getCookie } from "../../utils/getCookie";
 import { useEffect } from "react";
@@ -45,7 +45,7 @@ const Login = (props: Props) => {
   });
   const { toast } = useToast();
   const router = useRouter();
-  const { user, setUser } = useContext(userContext);
+  const { user, setUser } = useUserContext();
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   async function onSubmit(event: React.SyntheticEvent) {
