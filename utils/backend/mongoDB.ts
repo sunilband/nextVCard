@@ -5,7 +5,7 @@ export const connectDB = async () => {
     const conn = await mongoose.connect(
       process.env.NEXT_PUBLIC_MONGO_URI as string,
       {
-        dbName: "TaskMaster",
+        dbName: "DigiVCard",
       },
     );
     console.log(`MongoDB Connected: ${conn.connection.host}`);

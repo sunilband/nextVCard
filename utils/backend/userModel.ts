@@ -22,9 +22,42 @@ const schema = new mongoose.Schema(
       select: false,
       minLength: [6, "Password too short"],
     },
+    data: {
+      type: Object,
+      default: {
+        name: "",
+        designation: "",
+        company: "",
+        description: "",
+        email: "",
+        phone: "",
+        socials: {
+          twitter: null,
+          facebook: null,
+          instagram: null,
+          linkedin: null,
+          youtube: null,
+          behance: null,
+          whatsapp: null,
+          github: null,
+        },
+        businessHours: {
+          sunday: "",
+          monday: "",
+          tuesday: "",
+          wednesday: "",
+          thursday: "",
+          friday: "",
+          saturday: "",
+        },
+        services: [],
+        testimonials: [],
+      },
+    },
   },
   { timestamps: true },
 );
+
 // @ts-ignore
 mongoose.models = {};
 export const UserModel = mongoose.model("User", schema);
