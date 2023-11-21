@@ -17,7 +17,7 @@ import { useContext } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useToast } from "@/components/ui/use-toast";
-import { userSignup } from "@/utils/apiRequests/authFunctions";
+import { signup } from "@/utils/apiCalls/Signup";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -70,7 +70,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     } else {
       // call api here
       try {
-        userSignup({
+        signup({
           name: formik.values.firstname + " " + formik.values.lastname,
           email: formik.values.email,
           password: formik.values.password,
