@@ -25,6 +25,7 @@ const Navbar = (props: Props) => {
         className="h-8"
         onClick={() => {
           setUser({
+            ...user,
             name: null,
             email: null,
             token: null,
