@@ -25,8 +25,9 @@ export default function Page({ params }: { params: { userName: string } }) {
         getdetails(id).then((res: any) => {
           if (res.success) {
             setUser({
-              name: res.user.name,
-              email: res.user.email,
+              ...user,
+              name: res?.user?.name,
+              email: res?.user?.email,
               token: "",
               data: res.user.data,
             });
