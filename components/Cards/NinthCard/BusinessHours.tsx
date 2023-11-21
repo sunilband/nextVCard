@@ -1,9 +1,11 @@
 import React from "react";
 import styles from "./SixthCard.module.css";
+import { useUserContext } from "@/context/userContexts";
 
 type Props = {};
 
 const BusinessHours = (props: Props) => {
+  const { user } = useUserContext();
   return (
     <div className="h-[800px]  flex flex-col gap-2 justify-center items-center relative">
       <div className="w-[80%] flex flex-col gap-4">
@@ -134,49 +136,49 @@ const BusinessHours = (props: Props) => {
         <div className={`flex justify-center ninthFont2 text-xl z-50`}>
           <div className="flex justify-between border rounded-md  bg-[#11001C] sm:w-[80%] w-[100%] sm:px-14 px-1 ">
             <p>Monday</p>
-            <p className="font-bold">8AM - 10PM</p>
+            <p className="font-bold">{user?.data?.businessHours?.monday}</p>
           </div>
         </div>
 
         <div className={`flex justify-center ninthFont2 text-xl z-50`}>
           <div className="flex justify-between border rounded-md  bg-[#11001C] sm:w-[80%] w-[100%] sm:px-14 px-1 ">
             <p>Tuesday</p>
-            <p className="font-bold">8AM - 10PM</p>
+            <p className="font-bold">{user?.data?.businessHours?.tuesday}</p>
           </div>
         </div>
 
         <div className={`flex justify-center ninthFont2 text-xl z-50`}>
           <div className="flex justify-between border rounded-md  bg-[#11001C] sm:w-[80%] w-[100%] sm:px-14 px-1 ">
             <p>Wednesday</p>
-            <p className="font-bold">8AM - 10PM</p>
+            <p className="font-bold">{user?.data?.businessHours?.wednesday}</p>
           </div>
         </div>
 
         <div className={`flex justify-center ninthFont2 text-xl z-50`}>
           <div className="flex justify-between border rounded-md  bg-[#11001C] sm:w-[80%] w-[100%] sm:px-14 px-1 ">
             <p>Thursday</p>
-            <p className="font-bold">8AM - 10PM</p>
+            <p className="font-bold">{user?.data?.businessHours?.thursday}</p>
           </div>
         </div>
 
         <div className={`flex justify-center ninthFont2 text-xl z-50`}>
           <div className="flex justify-between border rounded-md  bg-[#11001C] sm:w-[80%] w-[100%] sm:px-14 px-1 ">
             <p>Friday</p>
-            <p className="font-bold">8AM - 10PM</p>
+            <p className="font-bold">{user?.data?.businessHours?.friday}</p>
           </div>
         </div>
 
         <div className={`flex justify-center ninthFont2 text-xl z-50`}>
           <div className="flex justify-between border rounded-md  bg-[#11001C] sm:w-[80%] w-[100%] sm:px-14 px-1 ">
             <p>Saturday</p>
-            <p className="font-bold">8AM - 10PM</p>
+            <p className="font-bold">{user?.data?.businessHours?.saturday}</p>
           </div>
         </div>
 
         <div className={`flex justify-center ninthFont2 text-xl z-50`}>
           <div className="flex justify-between border rounded-md  bg-[#11001C] sm:w-[80%] w-[100%] sm:px-14 px-1 ">
             <p>Sunday</p>
-            <p className="font-bold">Closed</p>
+            <p className="font-bold">{user?.data?.businessHours?.sunday}</p>
           </div>
         </div>
       </div>

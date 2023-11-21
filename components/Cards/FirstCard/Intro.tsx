@@ -1,44 +1,53 @@
+"use client";
 import React from "react";
 import dummyImage from "../../../public/images/dummyImage.jpg";
 import Image from "next/image";
 import { SocialIcon } from "react-social-icons";
 import figmaLogo from "../../../public/svgs/logos/figms.svg";
+import { useUserContext } from "@/context/userContexts";
 
 type Props = {};
 
 const Intro = (props: Props) => {
+  const { user } = useUserContext();
+  console.log(user);
   return (
     <>
       <div className="bg-[#242424] flex flex-col justify-between lg:flex-row">
         <div className="w-full lg:w-auto  flex justify-center">
           <div className="relative bg-[#242424] flex justify-center w-[100vw] lg:w-[auto]">
             <Image
-              src={dummyImage}
+              // @ts-ignore
+              src={user?.data?.profile ? user?.data?.profile : dummyImage}
               alt="dummyImage"
+              width={300}
+              height={300}
               className={`w-[300px] h-[300px] rounded-full p-4`}
             />
           </div>
         </div>
 
-        <div className="flex flex-col items-center sm:w-[100%]  lg:w-[75%] justify-center text-[#F9D254]">
+        <div className="flex flex-col self-center items-center sm:w-[100%]  lg:w-[75%] justify-center text-[#F9D254]">
           <div className="flex justify-between items-center m-2 gap-2 w-full ">
             <div>
               {/* name */}
               <div className=" w-[100vw] lg:w-[75vw] flex justify-center lg:justify-start">
                 <h1 className="text-5xl text-center sm:text-left font-bold mt-4 tracking-widest">
-                  John Doe
+                  {user?.name ? user?.name : ""}
                 </h1>
               </div>
 
               {/* title */}
               <div className="w-[100vw] lg:w-[75vw] flex justify-center lg:justify-start">
                 <h2 className="text-xl font-light text-center sm:text-left mb-2 text-slate-200">
-                  IT developer at
+                  {/* @ts-ignore */}
+                  {user?.data?.designation ? user?.data?.designation : ""} at
                   {/* Organization */}
                   <span>
                     <span className="text-slate-200 text-xl font-medium">
                       {" "}
-                      Google
+                      {/* @ts-ignore */}
+                      {user?.data?.company ? user?.data?.company : ""}
                     </span>
                   </span>
                 </h2>
@@ -46,50 +55,92 @@ const Intro = (props: Props) => {
 
               <div className="flex flex-wrap justify-center lg:justify-start gap-x-5 text-[#F9D254] text-xl font-medium pb-3 pt-6 tracking-wide">
                 {/* phone */}
-                <h2>+918390685016</h2>
+                {/* @ts-ignore */}
+                <h2>{user.data.phone ? user.data.phone : ""}</h2>
                 {/* email */}
-                <h2>sunilbandwork@gmail.com</h2>
+                {/* @ts-ignore */}
+                <h2>{user.data.email ? user.data.email : ""}</h2>
               </div>
 
               {/* socials */}
               <div className="w-[100vw] lg:w-[75vw] flex justify-center lg:justify-start  space-x-4   items-center flex-wrap gap-2 ">
                 <SocialIcon
-                  url="https://twitter.com/jaketrent"
+                  // @ts-ignore
+                  url={
+                    user?.data?.socials?.twitter
+                      ? user?.data?.socials?.twitter
+                      : ""
+                  }
                   bgColor="#F9D254"
                   className="hover:scale-105 transition-all ease-in-out duration-100"
                 />
                 <SocialIcon
-                  url="https://facebook.com/jaketrent"
+                  // @ts-ignore
+                  url={
+                    user?.data?.socials?.facebook
+                      ? user?.data?.socials?.facebook
+                      : ""
+                  }
                   bgColor="#F9D254"
                   className="hover:scale-105 transition-all ease-in-out duration-100"
                 />
                 <SocialIcon
-                  url="https://instagram.com/jaketrent"
+                  // @ts-ignore
+                  url={
+                    user?.data?.socials?.instagram
+                      ? user?.data?.socials?.instagram
+                      : ""
+                  }
                   bgColor="#F9D254"
                   className="hover:scale-105 transition-all ease-in-out duration-100"
                 />
                 <SocialIcon
-                  url="https://linkedin.com/jaketrent"
+                  // @ts-ignore
+                  url={
+                    user?.data?.socials?.linkedin
+                      ? user?.data?.socials?.linkedin
+                      : ""
+                  }
                   bgColor="#F9D254"
                   className="hover:scale-105 transition-all ease-in-out duration-100"
                 />
                 <SocialIcon
-                  url="https://youtube.com/jaketrent"
+                  // @ts-ignore
+                  url={
+                    user?.data?.socials?.youtube
+                      ? user?.data?.socials?.youtube
+                      : ""
+                  }
                   bgColor="#F9D254"
                   className="hover:scale-105 transition-all ease-in-out duration-100"
                 />
                 <SocialIcon
-                  url="https://behance.com/jaketrent"
+                  // @ts-ignore
+                  url={
+                    user?.data?.socials?.behance
+                      ? user?.data?.socials?.behance
+                      : ""
+                  }
                   bgColor="#F9D254"
                   className="hover:scale-105 transition-all ease-in-out duration-100"
                 />
                 <SocialIcon
-                  url="https://whatsapp.com/jaketrent"
+                  // @ts-ignore
+                  url={
+                    user?.data?.socials?.whatsapp
+                      ? user?.data?.socials?.whatsapp
+                      : ""
+                  }
                   bgColor="#F9D254"
                   className="hover:scale-105 transition-all ease-in-out duration-100"
                 />
                 <SocialIcon
-                  url="https://github.com/sunilband"
+                  // @ts-ignore
+                  url={
+                    user?.data?.socials?.github
+                      ? user?.data?.socials?.github
+                      : ""
+                  }
                   bgColor="#F9D254"
                   className="hover:scale-105 transition-all ease-in-out duration-100"
                 />
@@ -99,10 +150,8 @@ const Intro = (props: Props) => {
 
           {/* bio */}
           <p className="text-lg font-light tracking-wide px-2 text-center lg:text-left">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt,
-            facere magni. Culpa ex, ab vel molestiae officiis mollitia quos
-            impedit accusamus aliquam, ipsam cupiditate. Sint voluptates facilis
-            fuga eaque!
+            {/* @ts-ignore */}
+            {user?.data?.description ? user?.data?.description : ""}
           </p>
         </div>
       </div>

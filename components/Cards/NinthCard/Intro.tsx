@@ -4,10 +4,12 @@ import Image from "next/image";
 import { SocialIcon } from "react-social-icons";
 import figmaLogo from "../../../public/svgs/logos/figms.svg";
 import "./SixthCard.css";
+import { useUserContext } from "@/context/userContexts";
 
 type Props = {};
 
 const Intro = (props: Props) => {
+  const { user } = useUserContext();
   return (
     <>
       <div className="flex relative right-0 justify-center items-center gap-4 flex-wrap h-[800px] gradient">
@@ -145,16 +147,19 @@ const Intro = (props: Props) => {
           className="md:h-[500px] md:w-[500px] h-[350px] w-[350px] relative flex justify-center items-center overflow-hidden"
         >
           <Image
-            src={dummyImage}
+            src={user?.data?.profile || ""}
+            width={300}
+            height={300}
             alt="dummyImage"
             className="md:w-[500px] md:h-[500px] h-[300px] w-[300px] rounded-full absolute top-50 left-50 "
           />
         </div>
 
         <div className="w-[500px]  flex flex-col justify-center items-center leading-none text-center">
-          <h2 className="text-[100px] ninthFont mb-2">John Doe</h2>
+          <h2 className="text-[100px] ninthFont mb-2">{user?.data?.name}</h2>
           <p className="text-[40px] ninthFont2">
-            Software engineer at <span className="font-semibold">Google</span>
+            {user?.data?.designation} at{" "}
+            <span className="font-semibold">{user?.data?.company}</span>
           </p>
         </div>
       </div>
@@ -163,7 +168,7 @@ const Intro = (props: Props) => {
       <div className="flex w-screen justify-center relative h-[800px]">
         <div className="w-[80%] z-50 ">
           <h2 className="ninthFont text-[60px] my-10 absolute z-50 leading-none">
-            Meet John
+            Meet {user?.data?.name}
           </h2>
           {/*  */}
           <div
@@ -174,55 +179,53 @@ const Intro = (props: Props) => {
           ></div>
           {/*  */}
           <p className="md:text-[30px] text-[20px] ninthFont2 mb-5 mt-52 md:mt-32">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor ad
-            nostrum, porro possimus tempora incidunt molestiae. Ipsa sit quidem
-            eligendi dignissimos quos beatae necessitatibus asperiores veniam
-            nesciunt. Vero, illum sapiente.
+            {user?.data?.description}
           </p>
           <div className="flex flex-wrap gap-x-8 gap-y-2 mb-10 font-semibold ninthFont2 md:text-[30px]">
-            <p className="">test@gmail.com</p>
+            <p className="">{user?.data?.email}</p>
 
-            <p className="">+918547487547</p>
+            <p className="">{user?.data?.phone}</p>
           </div>
 
           <div className="flex gap-4 flex-wrap items-center">
             <SocialIcon
-              url="https://twitter.com/jaketrent"
+              url={user?.data?.socials?.twitter || ""}
               bgColor="#FFFFFF"
               className="hover:scale-105 transition-all ease-in-out duration-100"
             />
             <SocialIcon
-              url="https://facebook.com/jaketrent"
+              url={user?.data?.socials?.facebook || ""}
               bgColor="#FFFFFF"
               className="hover:scale-105 transition-all ease-in-out duration-100"
             />
             <SocialIcon
-              url="https://instagram.com/jaketrent"
+              url={user?.data?.socials?.instagram || ""}
               bgColor="#FFFFFF"
               className="hover:scale-105 transition-all ease-in-out duration-100"
             />
             <SocialIcon
-              url="https://linkedin.com/jaketrent"
+              url={user?.data?.socials?.linkedin || ""}
               bgColor="#FFFFFF"
               className="hover:scale-105 transition-all ease-in-out duration-100"
             />
             <SocialIcon
-              url="https://youtube.com/jaketrent"
+              url={user?.data?.socials?.youtube || ""}
               bgColor="#FFFFFF"
               className="hover:scale-105 transition-all ease-in-out duration-100"
             />
             <SocialIcon
-              url="https://behance.com/jaketrent"
+              url={user?.data?.socials?.behance || ""}
               bgColor="#FFFFFF"
               className="hover:scale-105 transition-all ease-in-out duration-100"
             />
             <SocialIcon
-              url="https://whatsapp.com/jaketrent"
+              url={user?.data?.socials?.whatsapp || ""}
+              network="whatsapp"
               bgColor="#FFFFFF"
               className="hover:scale-105 transition-all ease-in-out duration-100"
             />
             <SocialIcon
-              url="https://github.com/sunilband"
+              url={user?.data?.socials?.github || ""}
               bgColor="#FFFFFF"
               className="hover:scale-105 transition-all ease-in-out duration-100"
             />

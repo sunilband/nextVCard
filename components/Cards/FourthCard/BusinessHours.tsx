@@ -1,8 +1,10 @@
 import React from "react";
+import { useUserContext } from "@/context/userContexts";
 
 type Props = {};
 
 const BusinessHours = (props: Props) => {
+  const { user } = useUserContext();
   return (
     <div className="text-[#242424] h-[800px]  flex justify-center">
       <div className="flex flex-col w-[80%]  items-center ">
@@ -19,31 +21,31 @@ const BusinessHours = (props: Props) => {
             </tr>
             <tr>
               <td className="p-4">Monday</td>
-              <td>9:00am - 5:00pm</td>
+              <td>{user?.data?.businessHours?.monday}</td>
             </tr>
             <tr>
               <td className="p-4">Tuesday</td>
-              <td>9:00am - 5:00pm</td>
+              <td>{user?.data?.businessHours?.tuesday}</td>
             </tr>
             <tr>
               <td className="p-4">Wednesday</td>
-              <td>9:00am - 5:00pm</td>
+              <td>{user?.data?.businessHours?.wednesday}</td>
             </tr>
             <tr>
               <td className="p-4">Thursday</td>
-              <td>9:00am - 5:00pm</td>
+              <td>{user?.data?.businessHours?.thursday}</td>
             </tr>
             <tr>
               <td className="p-4">Friday</td>
-              <td>9:00am - 5:00pm</td>
+              <td>{user?.data?.businessHours?.friday}</td>
             </tr>
             <tr>
               <td className="p-4">Saturday</td>
-              <td>9:00am - 5:00pm</td>
+              <td>{user?.data?.businessHours?.saturday}</td>
             </tr>
             <tr>
               <td className="p-4">Sunday</td>
-              <td>Closed</td>
+              <td>{user?.data?.businessHours?.sunday}</td>
             </tr>
           </table>
         </div>

@@ -2,10 +2,12 @@ import React from "react";
 import dummyImage from "../../../public/images/dummyImage.jpg";
 import Image from "next/image";
 import introBg from "./assets/introBg.svg";
+import { useUserContext } from "@/context/userContexts";
 
 type Props = {};
 
 const Intro = (props: Props) => {
+  const { user } = useUserContext();
   return (
     <>
       <div className="bg-[#2196F3] flex flex-col justify-center items-center relative h-[800px]">
@@ -29,7 +31,9 @@ const Intro = (props: Props) => {
         </div>
         {/*  */}
         <Image
-          src={dummyImage}
+          src={user?.data?.profile ? user?.data?.profile : dummyImage}
+          width={300}
+          height={300}
           alt="dummyImage"
           className="rounded-full w-[300px] h-[300px] z-50 absolute left-50 right-50 top-[16rem]"
         />
@@ -78,34 +82,29 @@ const Intro = (props: Props) => {
           {/* text */}
           <div className="absolute top-0 px-10">
             <h2 className="z-50 fourthFont uppercase text-[100px] mt-16 leading-none">
-              John doe
+              {user?.data?.name}
             </h2>
             <p className="z-50 fourthFont2 text-[32px]">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
-              dolor ipsam nulla, maxime a maiores ab, quaerat vitae dolorem
-              repellat ipsa tenetur asperiores autem distinctio sapiente et
-              illo. Praesentium nam, nisi veritatis omnis iure ab soluta sed
-              dolorem quia repudiandae dicta, nostrum provident, et in ipsa
-              harum molestiae optio maxime.
+              {user?.data?.description}
             </p>
 
             <div className="flex gap-x-36 gap-y-10 flex-wrap mt-40">
               <div>
                 <p className="fourthFont2 text-3xl tracking-wider">Position</p>
                 <p className="text-2xl">
-                  Software developer at{" "}
-                  <span className="font-bold">Google</span>
+                  {user?.data?.designation} at{" "}
+                  <span className="font-bold">{user?.data?.company}</span>
                 </p>
               </div>
 
               <div>
                 <p className="fourthFont2 text-3xl tracking-wider">Phone</p>
-                <p className="text-2xl">8390685016</p>
+                <p className="text-2xl">{user?.data?.phone}</p>
               </div>
 
               <div>
                 <p className="fourthFont2 text-3xl tracking-wider">Email</p>
-                <p className="text-2xl">test@gmail.com</p>
+                <p className="text-2xl">{user?.data?.email}</p>
               </div>
             </div>
             <div>
@@ -113,14 +112,86 @@ const Intro = (props: Props) => {
                 Socials
               </p>
               <div className="flex flex-wrap gap-3 mb-10">
-                <p className="text-2xl text-blue-500">Twitter</p>
-                <p className="text-2xl text-blue-500">Facebook</p>
-                <p className="text-2xl text-blue-500">Instagram</p>
-                <p className="text-2xl text-blue-500">LinkedIn</p>
-                <p className="text-2xl text-blue-500">Youtube</p>
-                <p className="text-2xl text-blue-500">Behance</p>
-                <p className="text-2xl text-blue-500">Whatsapp</p>
-                <p className="text-2xl text-blue-500">Github</p>
+                <a
+                  className="text-2xl text-blue-500"
+                  href={
+                    user?.data?.socials?.twitter
+                      ? user?.data?.socials?.twitter
+                      : ""
+                  }
+                >
+                  Twitter
+                </a>
+                <a
+                  className="text-2xl text-blue-500"
+                  href={
+                    user?.data?.socials?.facebook
+                      ? user?.data?.socials?.facebook
+                      : ""
+                  }
+                >
+                  Facebook
+                </a>
+                <a
+                  className="text-2xl text-blue-500"
+                  href={
+                    user?.data?.socials?.instagram
+                      ? user?.data?.socials?.instagram
+                      : ""
+                  }
+                >
+                  Instagram
+                </a>
+                <a
+                  className="text-2xl text-blue-500"
+                  href={
+                    user?.data?.socials?.linkedin
+                      ? user?.data?.socials?.linkedin
+                      : ""
+                  }
+                >
+                  LinkedIn
+                </a>
+                <a
+                  className="text-2xl text-blue-500"
+                  href={
+                    user?.data?.socials?.youtube
+                      ? user?.data?.socials?.youtube
+                      : ""
+                  }
+                >
+                  Youtube
+                </a>
+                <a
+                  className="text-2xl text-blue-500"
+                  href={
+                    user?.data?.socials?.behance
+                      ? user?.data?.socials?.behance
+                      : ""
+                  }
+                >
+                  Behance
+                </a>
+                <a
+                  className="text-2xl text-blue-500"
+                  href={
+                    user?.data?.socials?.whatsapp
+                      ? user?.data?.socials?.whatsapp
+                      : ""
+                  }
+                >
+                  Whatsapp
+                </a>
+                <a
+                  className="text-2xl text-blue-500"
+                  href={
+                    user?.data?.socials?.github
+                      ? user?.data?.socials?.github
+                      : ""
+                  }
+                >
+                  Github
+                </a>
               </div>
             </div>
           </div>

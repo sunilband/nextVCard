@@ -4,10 +4,12 @@ import Image from "next/image";
 import { SocialIcon } from "react-social-icons";
 import figmaLogo from "../../../public/svgs/logos/figms.svg";
 import styles from "./SixthCard.module.css";
+import { useUserContext } from "@/context/userContexts";
 
 type Props = {};
 
 const Intro = (props: Props) => {
+  const { user } = useUserContext();
   return (
     <>
       <div className="flex justify-center items-center gap-4 flex-wrap h-[800px]">
@@ -20,7 +22,9 @@ const Intro = (props: Props) => {
           className="md:h-[500px] md:w-[500px] h-[350px] w-[350px] relative flex justify-center items-center overflow-hidden "
         >
           <Image
-            src={dummyImage}
+            src={user?.data?.profile || ""}
+            width={250}
+            height={250}
             alt="dummyImage"
             className="md:w-[250px] md:h-[250px] h-[200px] w-[200px] rounded-full absolute top-50 left-50 "
           />
@@ -36,9 +40,10 @@ const Intro = (props: Props) => {
         </div>
 
         <div className="w-[500px]  flex flex-col justify-center items-center leading-none text-center">
-          <h2 className="text-[80px] seventhFont ">John Doe</h2>
+          <h2 className="text-[80px] seventhFont ">{user?.data?.name}</h2>
           <p className="text-[20px] seventhFont2">
-            Software engineer at <span className="font-semibold">Google</span>
+            {user?.data?.designation} at{" "}
+            <span className="font-semibold">{user?.data?.company}</span>
           </p>
         </div>
       </div>
@@ -68,20 +73,17 @@ const Intro = (props: Props) => {
           </div>
           {/*  */}
           <p className="text-[30px] seventhFont2 mb-5 mt-32">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor ad
-            nostrum, porro possimus tempora incidunt molestiae. Ipsa sit quidem
-            eligendi dignissimos quos beatae necessitatibus asperiores veniam
-            nesciunt. Vero, illum sapiente.
+            {user?.data?.description}
           </p>
           <div className="flex flex-wrap gap-8 seventhFont2 md:text-[30px] font-normal">
             <div className="flex flex-col gap-1 p-3 rounded-md bg-[#BFB0A0]">
               <p className="">Email</p>
-              <p className="">test@gmail.com</p>
+              <p className="">{user?.data?.email}</p>
             </div>
 
             <div className="flex flex-col gap-1 p-3 rounded-md bg-[#BFB0A0]">
               <p className="">Phone</p>
-              <p className="">+918547487547</p>
+              <p className="">{user?.data?.phone}</p>
             </div>
           </div>
 
@@ -90,35 +92,99 @@ const Intro = (props: Props) => {
             <div className="mb-10">
               <p className=" flex flex-wrap gap-2">
                 <span className="hover:text-blue-300 transition-all ease-in-out duration-150">
-                  Twitter
+                  <a
+                    href={
+                      user?.data?.socials?.twitter
+                        ? user?.data?.socials?.twitter
+                        : ""
+                    }
+                  >
+                    Twitter
+                  </a>
                 </span>
                 ,
                 <span className="hover:text-blue-300 transition-all ease-in-out duration-150">
-                  Facebook
+                  <a
+                    href={
+                      user?.data?.socials?.facebook
+                        ? user?.data?.socials?.facebook
+                        : ""
+                    }
+                  >
+                    Facebook
+                  </a>
                 </span>
                 ,
                 <span className="hover:text-blue-300 transition-all ease-in-out duration-150">
-                  Instagram
+                  <a
+                    href={
+                      user?.data?.socials?.instagram
+                        ? user?.data?.socials?.instagram
+                        : ""
+                    }
+                  >
+                    Instagram
+                  </a>
                 </span>
                 ,
                 <span className="hover:text-blue-300 transition-all ease-in-out duration-150">
-                  LinkedIn
+                  <a
+                    href={
+                      user?.data?.socials?.linkedin
+                        ? user?.data?.socials?.linkedin
+                        : ""
+                    }
+                  >
+                    LinkedIn
+                  </a>
                 </span>
                 ,
                 <span className="hover:text-blue-300 transition-all ease-in-out duration-150">
-                  Youtube
+                  <a
+                    href={
+                      user?.data?.socials?.youtube
+                        ? user?.data?.socials?.youtube
+                        : ""
+                    }
+                  >
+                    Youtube
+                  </a>
                 </span>
                 ,
                 <span className="hover:text-blue-300 transition-all ease-in-out duration-150">
-                  Behance
+                  <a
+                    href={
+                      user?.data?.socials?.behance
+                        ? user?.data?.socials?.behance
+                        : ""
+                    }
+                  >
+                    Behance
+                  </a>
                 </span>
                 ,
                 <span className="hover:text-blue-300 transition-all ease-in-out duration-150">
-                  Whatsapp
+                  <a
+                    href={
+                      user?.data?.socials?.whatsapp
+                        ? user?.data?.socials?.whatsapp
+                        : ""
+                    }
+                  >
+                    Whatsapp
+                  </a>
                 </span>
                 ,
                 <span className="hover:text-blue-300 transition-all ease-in-out duration-150">
-                  Github
+                  <a
+                    href={
+                      user?.data?.socials?.github
+                        ? user?.data?.socials?.github
+                        : ""
+                    }
+                  >
+                    Github
+                  </a>
                 </span>
               </p>
             </div>

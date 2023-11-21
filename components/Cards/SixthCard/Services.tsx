@@ -9,10 +9,12 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { useUserContext } from "@/context/userContexts";
 
 type Props = {};
 
 const Services = (props: Props) => {
+  const { user } = useUserContext();
   const windowSize: any = useRef([window.innerWidth, window.innerHeight]);
   return (
     <div className="h-[800px] relative">
@@ -187,172 +189,32 @@ const Services = (props: Props) => {
           onSwiper={(swiper) => console.log(swiper)}
           className="h-[500px] w-[90%] flex justify-center sixthFont2"
         >
-          <SwiperSlide className="hover:scale-[1.02] transition-all ease-in-out duration-100">
-            <div className="flex justify-center">
-              <div
-                className={`w-[350px] flex justify-center bg-[#e1e5eb] h-[450px] py-2 rounded-xl`}
+          {user?.data?.services?.map((service: any, key: any) => {
+            return (
+              <SwiperSlide
+                className="hover:scale-[1.02] transition-all ease-in-out duration-100"
+                key={key}
               >
-                <div className="flex flex-col justify-start items-center">
-                  <p className="sixthFont2 text-[30px] text-black mt-2">
-                    Service 1
-                  </p>
-                  <p className="h-[300px] z-50 mt-2 px-2 text-[13px] md:text-[15px]">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dolores corrupti repellendus consectetur pariatur eius,
-                    laudantium, voluptas reiciendis aspernatur id praesentium
-                    doloribus eveniet laborum? Aspernatur hic delectus id
-                    doloremque iure alias quos porro aperiam? Perferendis earum
-                    dicta possimus harum qui recusandae! Ea cupiditate
-                    recusandae porro placeat obcaecati esse deleniti voluptates
-                    culpa.
-                  </p>
-                  <button className="bg-[#333333] text-white px-6 py-5 rounded-ss-full rounded-ee-full mt-2">
-                    Read more
-                  </button>
+                <div className="flex justify-center">
+                  <div
+                    className={`w-[350px] flex justify-center bg-[#e1e5eb] h-[450px] py-2 rounded-xl`}
+                  >
+                    <div className="flex flex-col justify-start items-center">
+                      <p className="sixthFont2 text-[30px] text-black mt-2">
+                        {service?.name}
+                      </p>
+                      <p className="h-[300px] z-50 mt-2 px-2 text-[13px] md:text-[15px]">
+                        {service?.description}
+                      </p>
+                      {/* <button className="bg-[#333333] text-white px-6 py-5 rounded-ss-full rounded-ee-full mt-2">
+                      Read more
+                    </button> */}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </SwiperSlide>
-
-          <SwiperSlide className="hover:scale-[1.02] transition-all ease-in-out duration-100">
-            <div className="flex justify-center">
-              <div
-                className={`w-[350px] flex justify-center bg-[#e1e5eb] h-[450px] py-2 rounded-xl`}
-              >
-                <div className="flex flex-col justify-start items-center">
-                  <p className="sixthFont2 text-[30px] text-black mt-2">
-                    Service 1
-                  </p>
-                  <p className="h-[300px] z-50 mt-2 px-2 text-[13px] md:text-[15px]">
-                    {" "}
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dolores corrupti repellendus consectetur pariatur eius,
-                    laudantium, voluptas reiciendis aspernatur id praesentium
-                    doloribus eveniet laborum? Aspernatur hic delectus id
-                    doloremque iure alias quos porro aperiam? Perferendis earum
-                    dicta possimus harum qui recusandae! Ea cupiditate
-                    recusandae porro placeat obcaecati esse deleniti voluptates
-                    culpa.
-                  </p>
-                  <button className="bg-[#333333] text-white px-6 py-5 rounded-ss-full rounded-ee-full mt-2">
-                    Read more
-                  </button>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-
-          <SwiperSlide className="hover:scale-[1.02] transition-all ease-in-out duration-100">
-            <div className="flex justify-center">
-              <div
-                className={`w-[350px] flex justify-center bg-[#e1e5eb] h-[450px] py-2 rounded-xl`}
-              >
-                <div className="flex flex-col justify-start items-center">
-                  <p className="sixthFont2 text-[30px] text-black mt-2">
-                    Service 1
-                  </p>
-                  <p className="h-[300px] z-50 mt-2 px-2 text-[13px] md:text-[15px]">
-                    {" "}
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dolores corrupti repellendus consectetur pariatur eius,
-                    laudantium, voluptas reiciendis aspernatur id praesentium
-                    doloribus eveniet laborum? Aspernatur hic delectus id
-                    doloremque iure alias quos porro aperiam? Perferendis earum
-                    dicta possimus harum qui recusandae! Ea cupiditate
-                    recusandae porro placeat obcaecati esse deleniti voluptates
-                    culpa.
-                  </p>
-                  <button className="bg-[#333333] text-white px-6 py-5 rounded-ss-full rounded-ee-full mt-2">
-                    Read more
-                  </button>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-
-          <SwiperSlide className="hover:scale-[1.02] transition-all ease-in-out duration-100">
-            <div className="flex justify-center">
-              <div
-                className={`w-[350px] flex justify-center bg-[#e1e5eb] h-[450px] py-2 rounded-xl`}
-              >
-                <div className="flex flex-col justify-start items-center">
-                  <p className="sixthFont2 text-[30px] text-black mt-2">
-                    Service 1
-                  </p>
-                  <p className="h-[300px] z-50 mt-2 px-2 text-[13px] md:text-[15px]">
-                    {" "}
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dolores corrupti repellendus consectetur pariatur eius,
-                    laudantium, voluptas reiciendis aspernatur id praesentium
-                    doloribus eveniet laborum? Aspernatur hic delectus id
-                    doloremque iure alias quos porro aperiam? Perferendis earum
-                    dicta possimus harum qui recusandae! Ea cupiditate
-                    recusandae porro placeat obcaecati esse deleniti voluptates
-                    culpa.
-                  </p>
-                  <button className="bg-[#333333] text-white px-6 py-5 rounded-ss-full rounded-ee-full mt-2">
-                    Read more
-                  </button>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-
-          <SwiperSlide className="hover:scale-[1.02] transition-all ease-in-out duration-100">
-            <div className="flex justify-center">
-              <div
-                className={`w-[350px] flex justify-center bg-[#e1e5eb] h-[450px] py-2 rounded-xl`}
-              >
-                <div className="flex flex-col justify-start items-center">
-                  <p className="sixthFont2 text-[30px] text-black mt-2">
-                    Service 1
-                  </p>
-                  <p className="h-[300px] z-50 mt-2 px-2 text-[13px] md:text-[15px]">
-                    {" "}
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dolores corrupti repellendus consectetur pariatur eius,
-                    laudantium, voluptas reiciendis aspernatur id praesentium
-                    doloribus eveniet laborum? Aspernatur hic delectus id
-                    doloremque iure alias quos porro aperiam? Perferendis earum
-                    dicta possimus harum qui recusandae! Ea cupiditate
-                    recusandae porro placeat obcaecati esse deleniti voluptates
-                    culpa.
-                  </p>
-                  <button className="bg-[#333333] text-white px-6 py-5 rounded-ss-full rounded-ee-full mt-2">
-                    Read more
-                  </button>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-
-          <SwiperSlide className="hover:scale-[1.02] transition-all ease-in-out duration-100">
-            <div className="flex justify-center">
-              <div
-                className={`w-[350px] flex justify-center bg-[#e1e5eb] h-[450px] py-2 rounded-xl`}
-              >
-                <div className="flex flex-col justify-start items-center">
-                  <p className="sixthFont2 text-[30px] text-black mt-2">
-                    Service 1
-                  </p>
-                  <p className="h-[300px] z-50 mt-2 px-2 text-[13px] md:text-[15px]">
-                    {" "}
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dolores corrupti repellendus consectetur pariatur eius,
-                    laudantium, voluptas reiciendis aspernatur id praesentium
-                    doloribus eveniet laborum? Aspernatur hic delectus id
-                    doloremque iure alias quos porro aperiam? Perferendis earum
-                    dicta possimus harum qui recusandae! Ea cupiditate
-                    recusandae porro placeat obcaecati esse deleniti voluptates
-                    culpa.
-                  </p>
-                  <button className="bg-[#333333] text-white px-6 py-5 rounded-ss-full rounded-ee-full mt-2">
-                    Read more
-                  </button>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
       </div>
     </div>

@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+import { withUt } from "uploadthing/tw";
 import { nextui } from "@nextui-org/react";
 import next from "next";
 module.exports = {
@@ -9,6 +10,7 @@ module.exports = {
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+    ["./src/**/*.{ts,tsx,mdx}"],
   ],
   theme: {
     container: {

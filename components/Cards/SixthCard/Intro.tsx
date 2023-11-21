@@ -4,10 +4,12 @@ import Image from "next/image";
 import { SocialIcon } from "react-social-icons";
 import figmaLogo from "../../../public/svgs/logos/figms.svg";
 import styles from "./SixthCard.module.css";
+import { useUserContext } from "@/context/userContexts";
 
 type Props = {};
 
 const Intro = (props: Props) => {
+  const { user } = useUserContext();
   return (
     <>
       <div
@@ -127,20 +129,20 @@ const Intro = (props: Props) => {
         </div>
         <div className="flex flex-col md:flex-row-reverse gap-5 justify-between items-center w-[100%] px-6 text-center">
           <Image
-            src={dummyImage}
+            src={user?.data?.profile || ""}
             alt=""
-            className="z-50 md:h-[500px] md:w-[500px] w-[300px] h-[300px]  rounded-xl hover:scale-105 transition-all duration-500 ease-in-out hover:drop-shadow-2xl md:mr-8"
+            width={300}
+            height={300}
+            className="z-50 md:h-[300px] md:w-[300px] w-[300px] h-[300px]  rounded-xl hover:scale-105 transition-all duration-500 ease-in-out hover:drop-shadow-2xl md:mr-8"
           />
 
           <h2 className="sixthFont text-[100px] md:text-[150px] tracking-wider text-center leading-tight z-50 pl-0 md:pl-52">
-            John Doe
+            {user?.data?.name}
           </h2>
         </div>
 
         <p className="px-4 sm:text-3xl text-md  text-justify mt-10 sixthFont2 z-50 tracking-wider ">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo ut sint
-          unde veniam suscipit dolorem. Velit accusantium sit id provident ad
-          facere quos iure esse fuga dolorum consectetur repellat consequatur
+          {user?.data?.description}
         </p>
       </div>
       {/*  */}
@@ -271,18 +273,19 @@ const Intro = (props: Props) => {
             <div className="flex flex-col gap-1 ">
               <p className="">Postion</p>
               <p className="">
-                Software developer at <span className="font-bold">Google</span>
+                {user?.data?.designation} at{" "}
+                <span className="font-bold">{user?.data?.company}</span>
               </p>
             </div>
 
             <div className="flex flex-col gap-1 ">
               <p className="">Email</p>
-              <p className="">test@gmail.com</p>
+              <p className="">{user?.data?.email}</p>
             </div>
 
             <div className="flex flex-col gap-1 ">
               <p className="">Phone</p>
-              <p className="">+918547487547</p>
+              <p className="">{user?.data?.phone}</p>
             </div>
           </div>
 
@@ -291,35 +294,99 @@ const Intro = (props: Props) => {
             <div className="mb-10">
               <p className=" flex flex-wrap gap-2">
                 <span className="hover:text-blue-300 transition-all ease-in-out duration-150">
-                  Twitter
+                  <a
+                    href={
+                      user?.data?.socials?.twitter
+                        ? user?.data?.socials?.twitter
+                        : ""
+                    }
+                  >
+                    Twitter
+                  </a>
                 </span>
                 ,
                 <span className="hover:text-blue-300 transition-all ease-in-out duration-150">
-                  Facebook
+                  <a
+                    href={
+                      user?.data?.socials?.facebook
+                        ? user?.data?.socials?.facebook
+                        : ""
+                    }
+                  >
+                    Facebook
+                  </a>
                 </span>
                 ,
                 <span className="hover:text-blue-300 transition-all ease-in-out duration-150">
-                  Instagram
+                  <a
+                    href={
+                      user?.data?.socials?.instagram
+                        ? user?.data?.socials?.instagram
+                        : ""
+                    }
+                  >
+                    Instagram
+                  </a>
                 </span>
                 ,
                 <span className="hover:text-blue-300 transition-all ease-in-out duration-150">
-                  LinkedIn
+                  <a
+                    href={
+                      user?.data?.socials?.linkedin
+                        ? user?.data?.socials?.linkedin
+                        : ""
+                    }
+                  >
+                    LinkedIn
+                  </a>
                 </span>
                 ,
                 <span className="hover:text-blue-300 transition-all ease-in-out duration-150">
-                  Youtube
+                  <a
+                    href={
+                      user?.data?.socials?.youtube
+                        ? user?.data?.socials?.youtube
+                        : ""
+                    }
+                  >
+                    Youtube
+                  </a>
                 </span>
                 ,
                 <span className="hover:text-blue-300 transition-all ease-in-out duration-150">
-                  Behance
+                  <a
+                    href={
+                      user?.data?.socials?.behance
+                        ? user?.data?.socials?.behance
+                        : ""
+                    }
+                  >
+                    Behance
+                  </a>
                 </span>
                 ,
                 <span className="hover:text-blue-300 transition-all ease-in-out duration-150">
-                  Whatsapp
+                  <a
+                    href={
+                      user?.data?.socials?.whatsapp
+                        ? user?.data?.socials?.whatsapp
+                        : ""
+                    }
+                  >
+                    Whatsapp
+                  </a>
                 </span>
                 ,
                 <span className="hover:text-blue-300 transition-all ease-in-out duration-150">
-                  Github
+                  <a
+                    href={
+                      user?.data?.socials?.github
+                        ? user?.data?.socials?.github
+                        : ""
+                    }
+                  >
+                    Github
+                  </a>
                 </span>
               </p>
             </div>

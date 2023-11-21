@@ -7,15 +7,15 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import FilledStar from "../../../public/svgs/StarFilled.svg";
-import EmptyStar from "../../../public/svgs/StarEmpty.svg";
 import Image from "next/image";
 import stockImage from "../../../public/images/testimonialStockImage.jpg";
-
+import { useUserContext } from "@/context/userContexts";
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 type Props = {};
 
 const Services = (props: Props) => {
+  const { user } = useUserContext();
   const windowSize: any = useRef([window.innerWidth, window.innerHeight]);
   console.log(windowSize.current);
   return (
@@ -53,362 +53,58 @@ const Services = (props: Props) => {
           className="h-[500px]"
         >
           {/*  */}
-          <SwiperSlide className="hover:scale-[1.02] transition-all ease-in-out duration-100">
-            <div className="w-[100%] flex justify-center">
-              <div className="w-[300px] h-[400px] rounded-md my-2 bg-slate-100 text-[#242424] border-[4px] border-[#242424]">
-                <div className="bg-[#242424] h-14 flex justify-center items-center gap-2">
-                  <Image
-                    src={FilledStar}
-                    alt="filledStar"
-                    width={20}
-                    height={20}
-                  />
-                  <Image
-                    src={FilledStar}
-                    alt="filledStar"
-                    width={20}
-                    height={20}
-                  />
-                  <Image
-                    src={FilledStar}
-                    alt="filledStar"
-                    width={20}
-                    height={20}
-                  />
+          {user?.data?.testimonials?.map((testimonial: any, key: any) => {
+            return (
+              <SwiperSlide
+                className="hover:scale-[1.02] transition-all ease-in-out duration-100"
+                key={key}
+              >
+                <div className="w-[100%] flex justify-center">
+                  <div className="w-[300px] h-[400px] rounded-md my-2 bg-slate-100 text-[#242424] border-[4px] border-[#242424]">
+                    <div className="bg-[#242424] h-14 flex justify-center items-center gap-2">
+                      <Image
+                        src={FilledStar}
+                        alt="filledStar"
+                        width={20}
+                        height={20}
+                      />
+                      <Image
+                        src={FilledStar}
+                        alt="filledStar"
+                        width={20}
+                        height={20}
+                      />
+                      <Image
+                        src={FilledStar}
+                        alt="filledStar"
+                        width={20}
+                        height={20}
+                      />
+                    </div>
+                    <div className="flex justify-center py-2">
+                      <Image
+                        src={stockImage}
+                        alt="stockImage"
+                        className="rounded-full w-28 h-28"
+                      />
+                    </div>
+                    <h2 className="text-center font-semibold tracking-wide  h-7">
+                      {testimonial?.name ? testimonial.name : ""}
+                    </h2>
+                    <p className="text-left mt-4 font-light h-[40%] overflow-hidden px-3">
+                      {testimonial?.description ? testimonial.description : ""}
+                    </p>
+                    {/* <div className="flex w-[100%] justify-center">
+                    <button className="w-[200px] bg-[#242424] text-white rounded-md border hover:scale-[1.02] transition-all ease-in-out duration-100">
+                      Read more
+                    </button>
+                  </div> */}
+                  </div>
                 </div>
-                <div className="flex justify-center py-2">
-                  <Image
-                    src={stockImage}
-                    alt="stockImage"
-                    className="rounded-full w-28 h-28"
-                  />
-                </div>
-                <p className="text-left mt-4 font-light h-[40%] overflow-hidden px-3">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Ratione ea repellendus possimus harum esse. Soluta quis neque
-                </p>
-                <div className="flex w-[100%] justify-center">
-                  <button className="w-[200px] bg-[#242424] text-white rounded-md border hover:scale-[1.02] transition-all ease-in-out duration-100">
-                    Read more
-                  </button>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          {/*  */}
-          {/*  */}
-          <SwiperSlide className="hover:scale-[1.02] transition-all ease-in-out duration-100">
-            <div className="w-[100%] flex justify-center">
-              <div className="w-[300px] h-[400px] rounded-md my-2 bg-slate-100 text-[#242424] border-[4px] border-[#242424]">
-                <div className="bg-[#242424] h-14 flex justify-center items-center gap-2">
-                  <Image
-                    src={FilledStar}
-                    alt="filledStar"
-                    width={20}
-                    height={20}
-                  />
-                  <Image
-                    src={FilledStar}
-                    alt="filledStar"
-                    width={20}
-                    height={20}
-                  />
-                  <Image
-                    src={FilledStar}
-                    alt="filledStar"
-                    width={20}
-                    height={20}
-                  />
-                </div>
-                <div className="flex justify-center py-2">
-                  <Image
-                    src={stockImage}
-                    alt="stockImage"
-                    className="rounded-full w-28 h-28"
-                  />
-                </div>
-                <p className="text-left mt-4 font-light h-[40%] overflow-hidden px-3">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Ratione ea repellendus possimus harum esse. Soluta quis neque
-                </p>
-                <div className="flex w-[100%] justify-center">
-                  <button className="w-[200px] bg-[#242424] text-white rounded-md border hover:scale-[1.02] transition-all ease-in-out duration-100">
-                    Read more
-                  </button>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          {/*  */}
+              </SwiperSlide>
+            );
+          })}
 
-          {/*  */}
-          <SwiperSlide className="hover:scale-[1.02] transition-all ease-in-out duration-100">
-            <div className="w-[100%] flex justify-center">
-              <div className="w-[300px] h-[400px] rounded-md my-2 bg-slate-100 text-[#242424] border-[4px] border-[#242424]">
-                <div className="bg-[#242424] h-14 flex justify-center items-center gap-2">
-                  <Image
-                    src={FilledStar}
-                    alt="filledStar"
-                    width={20}
-                    height={20}
-                  />
-                  <Image
-                    src={FilledStar}
-                    alt="filledStar"
-                    width={20}
-                    height={20}
-                  />
-                  <Image
-                    src={FilledStar}
-                    alt="filledStar"
-                    width={20}
-                    height={20}
-                  />
-                </div>
-                <div className="flex justify-center py-2">
-                  <Image
-                    src={stockImage}
-                    alt="stockImage"
-                    className="rounded-full w-28 h-28"
-                  />
-                </div>
-                <p className="text-left mt-4 font-light h-[40%] overflow-hidden px-3">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Ratione ea repellendus possimus harum esse. Soluta quis neque
-                </p>
-                <div className="flex w-[100%] justify-center">
-                  <button className="w-[200px] bg-[#242424] text-white rounded-md border hover:scale-[1.02] transition-all ease-in-out duration-100">
-                    Read more
-                  </button>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          {/*  */}
-
-          {/*  */}
-          <SwiperSlide className="hover:scale-[1.02] transition-all ease-in-out duration-100">
-            <div className="w-[100%] flex justify-center">
-              <div className="w-[300px] h-[400px] rounded-md my-2 bg-slate-100 text-[#242424] border-[4px] border-[#242424]">
-                <div className="bg-[#242424] h-14 flex justify-center items-center gap-2">
-                  <Image
-                    src={FilledStar}
-                    alt="filledStar"
-                    width={20}
-                    height={20}
-                  />
-                  <Image
-                    src={FilledStar}
-                    alt="filledStar"
-                    width={20}
-                    height={20}
-                  />
-                  <Image
-                    src={FilledStar}
-                    alt="filledStar"
-                    width={20}
-                    height={20}
-                  />
-                </div>
-                <div className="flex justify-center py-2">
-                  <Image
-                    src={stockImage}
-                    alt="stockImage"
-                    className="rounded-full w-28 h-28"
-                  />
-                </div>
-                <p className="text-left mt-4 font-light h-[40%] overflow-hidden px-3">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Ratione ea repellendus possimus harum esse. Soluta quis neque
-                </p>
-                <div className="flex w-[100%] justify-center">
-                  <button className="w-[200px] bg-[#242424] text-white rounded-md border hover:scale-[1.02] transition-all ease-in-out duration-100">
-                    Read more
-                  </button>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          {/*  */}
-
-          {/*  */}
-          <SwiperSlide className="hover:scale-[1.02] transition-all ease-in-out duration-100">
-            <div className="w-[100%] flex justify-center">
-              <div className="w-[300px] h-[400px] rounded-md my-2 bg-slate-100 text-[#242424] border-[4px] border-[#242424]">
-                <div className="bg-[#242424] h-14 flex justify-center items-center gap-2">
-                  <Image
-                    src={FilledStar}
-                    alt="filledStar"
-                    width={20}
-                    height={20}
-                  />
-                  <Image
-                    src={FilledStar}
-                    alt="filledStar"
-                    width={20}
-                    height={20}
-                  />
-                  <Image
-                    src={FilledStar}
-                    alt="filledStar"
-                    width={20}
-                    height={20}
-                  />
-                </div>
-                <div className="flex justify-center py-2">
-                  <Image
-                    src={stockImage}
-                    alt="stockImage"
-                    className="rounded-full w-28 h-28"
-                  />
-                </div>
-                <p className="text-left mt-4 font-light h-[40%] overflow-hidden px-3">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Ratione ea repellendus possimus harum esse. Soluta quis neque
-                </p>
-                <div className="flex w-[100%] justify-center">
-                  <button className="w-[200px] bg-[#242424] text-white rounded-md border hover:scale-[1.02] transition-all ease-in-out duration-100">
-                    Read more
-                  </button>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          {/*  */}
-
-          {/*  */}
-          <SwiperSlide className="hover:scale-[1.02] transition-all ease-in-out duration-100">
-            <div className="w-[100%] flex justify-center">
-              <div className="w-[300px] h-[400px] rounded-md my-2 bg-slate-100 text-[#242424] border-[4px] border-[#242424]">
-                <div className="bg-[#242424] h-14 flex justify-center items-center gap-2">
-                  <Image
-                    src={FilledStar}
-                    alt="filledStar"
-                    width={20}
-                    height={20}
-                  />
-                  <Image
-                    src={FilledStar}
-                    alt="filledStar"
-                    width={20}
-                    height={20}
-                  />
-                  <Image
-                    src={FilledStar}
-                    alt="filledStar"
-                    width={20}
-                    height={20}
-                  />
-                </div>
-                <div className="flex justify-center py-2">
-                  <Image
-                    src={stockImage}
-                    alt="stockImage"
-                    className="rounded-full w-28 h-28"
-                  />
-                </div>
-                <p className="text-left mt-4 font-light h-[40%] overflow-hidden px-3">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Ratione ea repellendus possimus harum esse. Soluta quis neque
-                </p>
-                <div className="flex w-[100%] justify-center">
-                  <button className="w-[200px] bg-[#242424] text-white rounded-md border hover:scale-[1.02] transition-all ease-in-out duration-100">
-                    Read more
-                  </button>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          {/*  */}
-
-          {/*  */}
-          <SwiperSlide className="hover:scale-[1.02] transition-all ease-in-out duration-100">
-            <div className="w-[100%] flex justify-center">
-              <div className="w-[300px] h-[400px] rounded-md my-2 bg-slate-100 text-[#242424] border-[4px] border-[#242424]">
-                <div className="bg-[#242424] h-14 flex justify-center items-center gap-2">
-                  <Image
-                    src={FilledStar}
-                    alt="filledStar"
-                    width={20}
-                    height={20}
-                  />
-                  <Image
-                    src={FilledStar}
-                    alt="filledStar"
-                    width={20}
-                    height={20}
-                  />
-                  <Image
-                    src={FilledStar}
-                    alt="filledStar"
-                    width={20}
-                    height={20}
-                  />
-                </div>
-                <div className="flex justify-center py-2">
-                  <Image
-                    src={stockImage}
-                    alt="stockImage"
-                    className="rounded-full w-28 h-28"
-                  />
-                </div>
-                <p className="text-left mt-4 font-light h-[40%] overflow-hidden px-3">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Ratione ea repellendus possimus harum esse. Soluta quis neque
-                </p>
-                <div className="flex w-[100%] justify-center">
-                  <button className="w-[200px] bg-[#242424] text-white rounded-md border hover:scale-[1.02] transition-all ease-in-out duration-100">
-                    Read more
-                  </button>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          {/*  */}
-
-          {/*  */}
-          <SwiperSlide className="hover:scale-[1.02] transition-all ease-in-out duration-100 ">
-            <div className="w-[100%] flex justify-center">
-              <div className="w-[300px] h-[400px] rounded-md my-2 bg-slate-100 text-[#242424] border-[4px] border-[#242424]">
-                <div className="bg-[#242424] h-14 flex justify-center items-center gap-2">
-                  <Image
-                    src={FilledStar}
-                    alt="filledStar"
-                    width={20}
-                    height={20}
-                  />
-                  <Image
-                    src={FilledStar}
-                    alt="filledStar"
-                    width={20}
-                    height={20}
-                  />
-                  <Image
-                    src={FilledStar}
-                    alt="filledStar"
-                    width={20}
-                    height={20}
-                  />
-                </div>
-                <div className="flex justify-center py-2">
-                  <Image
-                    src={stockImage}
-                    alt="stockImage"
-                    className="rounded-full w-28 h-28"
-                  />
-                </div>
-                <p className="text-left mt-4 font-light h-[40%] overflow-hidden px-3">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Ratione ea repellendus possimus harum esse. Soluta quis neque
-                </p>
-                <div className="flex w-[100%] justify-center">
-                  <button className="w-[200px] bg-[#242424] text-white rounded-md border hover:scale-[1.02] transition-all ease-in-out duration-100">
-                    Read more
-                  </button>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
           {/*  */}
         </Swiper>
       </div>

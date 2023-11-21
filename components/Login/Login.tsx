@@ -16,8 +16,9 @@ import { getCookie } from "../../utils/getCookie";
 import { useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useToast } from "@/components/ui/use-toast";
-import { getUser, userLogin } from "@/utils/apiRequests/authFunctions";
+// import { useToast } from "@/components/ui/use-toast";
+import { toast } from "react-toastify";
+import { login } from "@/utils/apiCalls/Login";
 import { COOKIE_KEYS } from "@/utils/cookieEnums";
 
 type Props = {};
@@ -43,7 +44,7 @@ const Login = (props: Props) => {
     }),
     onSubmit: (values) => {},
   });
-  const { toast } = useToast();
+  // const { toast } = useToast();
   const router = useRouter();
   const { user, setUser } = useUserContext();
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
@@ -56,44 +57,19 @@ const Login = (props: Props) => {
     }, 3000);
     // call api here
     try {
-      userLogin({
+      login({
         email: formik.values.email,
         password: formik.values.password,
       }).then((res) => {
         if (res.success) {
-          setCookie(null, COOKIE_KEYS.ACCESS_TOKEN, res.token, {
-            maxAge: 30 * 24 * 60 * 60,
-            path: "/",
-          });
-          try {
-            let token = res.token;
-            getUser(token).then((res) => {
-              const data = res;
-              setUser({
-                ...data,
-                token: token,
-              });
-              toast({
-                title: "Login Success",
-                description: res.message,
-              });
-              router.push("/");
-            });
-          } catch (error) {
-            console.log("no user cookie found", error);
-          }
-        } else
-          toast({
-            title: "Error occured",
-            description: res.error,
-          });
+          router.push("/editdata");
+        } else {
+          toast.error(res.error);
+        }
       });
     } catch (error: any) {
       console.log(error);
-      toast({
-        title: "Login Failed",
-        description: error,
-      });
+      toast.error(error.error);
     }
   }
 

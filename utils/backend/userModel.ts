@@ -52,6 +52,8 @@ const schema = new mongoose.Schema(
         },
         services: [],
         testimonials: [],
+        theme: "one",
+        profile: "",
       },
     },
   },
